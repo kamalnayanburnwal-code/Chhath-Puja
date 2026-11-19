@@ -25,9 +25,9 @@ assets/audio/background-music.mp3                                 your music: ju
 assets/videos/preparation-step-01.mp4 ... preparation-step-05.mp4  five prep clips
 assets/videos/club-message.mp4                                    the 1:30 club video
 assets/videos/distribution-clip.mp4                               the distribution clip
-assets/images/chhath-puja/ghat-sunrise.jpg , offerings.jpg
-assets/images/thekua/thekua-plate.jpg , ingredients.jpg
-assets/images/ingredients/atta, gur, ghee, naariyal, saunf, elaichi   (.jpg etc.)
+assets/images/chhath-puja/ghat-sunrise.webp , offerings.webp   (added)
+assets/images/thekua/thekua-plate.webp , ingredients.webp     (added)
+assets/images/ingredients/atta, gur, ghee, naariyal, saunf, elaichi  (added)
 assets/images/preparation/step-01 ... step-05                     optional covers for each step video
 ```
 

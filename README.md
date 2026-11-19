@@ -10,7 +10,7 @@ Plain HTML + CSS + vanilla JavaScript. No frameworks, no build step, no external
 
 | Part | Status |
 |---|---|
-| Five-tap Thekua opening (uses your plate photo, cut out; 5 bite stages, crumbs, dots, double-tap protection) | Done: `assets/images/thekua-*.webp` |
+| Five-tap Thekua opening (your 5 Thekua stage images, background removed; crumbs, progress dots, double-tap protection) | Done: `assets/images/thekua-*.webp` |
 | Illustrated hero (sunrise at the ghat) and 2D characters: devotees giving arghya, a man carrying the daura, a girl with a diya, sugarcane, a family walking home | Done: `assets/illustrations/*.svg` (animated, local) |
 | Tradition, Thekua, Preparation journey, distribution clip, club message, closing | Done |
 | Music button, volume, auto-lowering when any video plays | Done (needs your audio file) |

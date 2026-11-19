@@ -11,7 +11,7 @@ const CONFIG = {
   // (.m4a / .ogg / .wav also work, same name) and put it in assets/audio/
   music: "assets/audio/background-music",
   audioExts: [".mp3", ".m4a", ".ogg", ".wav"],
-  musicVolume: 0.4,
+  musicVolume: 0.7,
 
   // Allowed file types are tried in this order, so you can drop in
   // .mp4 / .webm / .mov videos and .webp / .jpg / .png images without touching code.
@@ -110,7 +110,7 @@ const Opening = (() => {
   for (let i = 0; i < TOTAL; i++) dots.appendChild(el("i"));
 
   // Per-bite crumb origin (percent of the Thekua box), roughly where each bite is
-  const origins = [[69, 37], [68, 58], [60, 41], [60, 63], [34, 50]];
+  const origins = [[78, 21], [20, 80], [19, 25], [77, 78], [49, 49]];
 
   function burst(stage) {
     if (reduceMotion || !crumbs.animate) return;
@@ -364,7 +364,7 @@ const Music = (() => {
     wantOn = true; sync();
     if (ducked) return; // will resume when the video stops
     audio.volume = 0;
-    audio.play().then(() => fadeTo(userVol, 900)).catch(() => { wantOn = false; sync(); });
+    audio.play().then(() => fadeTo(userVol, 900)).catch(() => { wantOn = false; sync(); if (!missing) toast("Tap the music button to start the music"); });
   }
   function pause() {
     wantOn = false; sync();

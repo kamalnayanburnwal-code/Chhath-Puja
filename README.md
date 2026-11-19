@@ -2,7 +2,7 @@
 
 A mobile-first website opened by scanning the QR code on a Thekua Prasad packet.
 Visitors tap a Thekua five times to take bites, then the site fades in: Chhath Puja story, Thekua story,
-a step-by-step preparation journey with individual videos, the club initiative, the 1:30 club message and a closing greeting.
+a step-by-step preparation journey with individual videos, the distribution clip, the 1:30 club message and a closing greeting.
 
 Plain HTML + CSS + vanilla JavaScript. No frameworks, no build step, no external services. Fonts are self-hosted.
 
@@ -10,34 +10,36 @@ Plain HTML + CSS + vanilla JavaScript. No frameworks, no build step, no external
 
 | Part | Status |
 |---|---|
-| Five-tap Thekua opening (5 bite stages, crumbs, progress dots, double-tap protection) | Done. Illustrations are generated and live in `assets/images/thekua-*.png` |
-| Hero, Tradition, Thekua, Preparation journey, Initiative, Club message, Closing | Done |
+| Five-tap Thekua opening (uses your plate photo, cut out; 5 bite stages, crumbs, dots, double-tap protection) | Done: `assets/images/thekua-*.webp` |
+| Illustrated hero (sunrise at the ghat) and 2D characters: devotees giving arghya, a man carrying the daura, a girl with a diya, sugarcane, a family walking home | Done: `assets/illustrations/*.svg` (animated, local) |
+| Tradition, Thekua, Preparation journey, distribution clip, club message, closing | Done |
 | Music button, volume, auto-lowering when any video plays | Done (needs your audio file) |
-| Photos and videos | **Placeholders**: they turn into real media the moment you add the files below |
+| Photos, videos, music | **Slots ready**: they fill in the moment you add the files below |
 
 ## Files you need to add
 
-Use these exact names. Nothing in the code needs to change. Extensions `.webp .jpg .jpeg .png` (images) and `.mp4 .webm .mov` (videos) are detected automatically.
+Use these exact names. Nothing in the code needs to change. `.webp .jpg .jpeg .png` (images), `.mp4 .webm .mov` (videos) and `.mp3 .m4a .ogg .wav` (music) are detected automatically.
 
 ```
-assets/videos/preparation-step-01.mp4 … preparation-step-05.mp4   five prep clips
+assets/audio/background-music.mp3                                 your music: just rename your download to this
+assets/videos/preparation-step-01.mp4 ... preparation-step-05.mp4  five prep clips
 assets/videos/club-message.mp4                                    the 1:30 club video
-assets/videos/distribution-clip.mp4                               optional distribution clip
-assets/audio/background-music.mp3                                 background music
+assets/videos/distribution-clip.mp4                               the distribution clip
 assets/images/chhath-puja/ghat-sunrise.jpg , offerings.jpg
 assets/images/thekua/thekua-plate.jpg , ingredients.jpg
-assets/images/initiative/packaging.jpg , distribution.jpg , group-photo.jpg
-assets/images/preparation/step-01.jpg … step-05.jpg               optional step covers
+assets/images/ingredients/atta, gur, ghee, naariyal, saunf, elaichi   (.jpg etc.)
+assets/images/preparation/step-01 ... step-05                     optional covers for each step video
 ```
 
-Each folder has a `README.txt` with sizes and a compression command. Open the site with `?debug` at the end of the URL
-(e.g. `index.html?debug`) to see the expected file path printed on every placeholder.
+Each folder has a `README.txt`. Open the site with `?debug` at the end of the URL (e.g. `index.html?debug`) to see the expected path printed on every placeholder.
+
+**Photo credits:** if you use Creative Commons photos (e.g. from Wikimedia Commons), list them in `assets/images/credits.json` (an example is in `assets/images/credits-example.json.txt`). The site then shows the credit under the photo and in a "Photo credits" list at the bottom.
 
 > **Step titles/descriptions:** the five step texts (in `CONFIG.steps` at the top of `script.js`) follow your brief.
 > Once your clips are in, watch each one and edit its title/text if it doesn't match. To add a step (shaping, moulds, frying),
 > add one line to that list and upload the clip.
 
-Everything text-based you may want to change (steps, ingredient notes, music path/volume, opening messages) is in the `CONFIG` block at the top of `script.js`. Page copy is in `index.html`; colours are the variables at the top of `style.css`.
+Text you may want to change (steps, ingredient notes, music name/volume, opening messages) is in the `CONFIG` block at the top of `script.js`. Page copy is in `index.html`; colours are the variables at the top of `style.css`.
 
 ## Preview on your computer
 
@@ -81,7 +83,8 @@ style.css             design (colours at the top)
 script.js             opening interaction, music, journey + CONFIG block
 assets/
   fonts/              self-hosted Cormorant Garamond, Mukta, Tiro Devanagari
-  images/             thekua-original.png, thekua-bite-1…5.png (the opening) + photo folders
+  images/             thekua-original.webp, thekua-bite-1..5.webp (the opening) + photo folders
+  illustrations/      2D SVG characters and scenes (hero, devotees, family, ornaments)
   videos/             preparation-step-01…05.mp4, club-message.mp4
   audio/              background-music.mp3
 ```

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60" role="img">
+<defs></defs>
+<style>
+.flame{transform-box:fill-box;transform-origin:50% 100%;animation:fl 1.6s ease-in-out infinite}
+@keyframes fl{0%,100%{transform:scale(1,1)}50%{transform:scale(.88,1.12) rotate(2deg)}}
+.stream{animation:str 1s linear infinite}@keyframes str{to{stroke-dashoffset:-18}}
+.sway{transform-box:fill-box;transform-origin:50% 100%;animation:sw 5s ease-in-out infinite}
+@keyframes sw{0%,100%{transform:rotate(-.8deg)}50%{transform:rotate(.8deg)}}
+.bob{animation:bob 4s ease-in-out infinite}@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+.wave{animation:wv 7s ease-in-out infinite alternate}@keyframes wv{from{transform:translateX(-14px)}to{transform:translateX(14px)}}
+.wave2{animation:wv 9s ease-in-out infinite alternate-reverse}
+.glow{transform-box:fill-box;transform-origin:center;animation:gl 6s ease-in-out infinite}@keyframes gl{0%,100%{transform:scale(1);opacity:.55}50%{transform:scale(1.08);opacity:.8}}
+.rise{animation:ri 2.4s cubic-bezier(.2,.8,.2,1) both}@keyframes ri{from{transform:translateY(70px)}to{transform:none}}
+.bird{animation:bd 14s linear infinite}@keyframes bd{from{transform:translateX(-120px)}to{transform:translateX(1320px)}}
+.wing{transform-box:fill-box;transform-origin:50% 50%;animation:wg .7s ease-in-out infinite alternate}@keyframes wg{to{transform:scaleY(.5)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<g transform="translate(30 38) scale(1)"><path d="M-14 0 q14 12 28 0 l-5 12 q-9 4 -18 0z" fill="#D49A45" stroke="#A9772F" stroke-width="1.5"/><path class="flame" d="M0 -2 q-9 -14 0 -26 q9 12 0 26z" fill="#F4C25B"/><path d="M0 -3 q-4 -8 0 -15 q4 7 0 15z" fill="#E8742F"/></g>
+</svg>

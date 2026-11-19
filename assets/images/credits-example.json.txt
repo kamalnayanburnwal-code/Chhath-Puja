@@ -1,0 +1,11 @@
+Rename this to credits.json (same folder) and edit. One entry per photo, using the same key as the photo's slot
+(ghat-sunrise, offerings, thekua-plate, ingredients):
+
+{
+  "ghat-sunrise": {
+    "title": "Chhath Puja at the ghat",
+    "author": "Photographer name",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Example.jpg"
+  }
+}

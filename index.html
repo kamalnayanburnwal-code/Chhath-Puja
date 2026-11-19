@@ -9,12 +9,12 @@
   <meta property="og:title" content="Take a bite! · Chhath Puja from Rotaract Club of RiiT">
   <meta property="og:description" content="Ek chhoti si mithaas, ek badi si parampara.">
   <meta property="og:type" content="website">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cellipse cx='16' cy='16' rx='14' ry='10' fill='%23B26C2C'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%23E2B877'/%3E%3C/svg%3E">
+  <link rel="icon" href="assets/illustrations/diya.svg" type="image/svg+xml">
 
   <!-- JS flag set early so CSS can avoid hiding content when JS is unavailable -->
   <script>document.documentElement.className += ' js locked';</script>
 
-  <link rel="preload" as="image" href="assets/images/thekua-original.png">
+  <link rel="preload" as="image" href="assets/images/thekua-original.webp">
   <link rel="stylesheet" href="assets/fonts/fonts.css">
   <link rel="stylesheet" href="style.css">
   <noscript><style>#opening{display:none!important}html.locked{overflow:auto!important}</style></noscript>
@@ -28,7 +28,7 @@
   <button class="skip-link" id="skip-intro" type="button">Skip intro</button>
 
   <div class="opening__stage">
-    <button id="thekua-btn" class="thekua" type="button" aria-label="Thekua. Tap to take a bite. Bite 0 of 5">
+    <button id="thekua-btn" class="thekua" type="button" aria-label="Thekua on a plate. Tap to take a bite. Bite 0 of 5">
       <span class="thekua__glow" aria-hidden="true"></span>
       <span class="thekua__stack" id="thekua-stack" aria-hidden="true"></span>
       <span class="thekua__crumbs" id="crumbs" aria-hidden="true"></span>
@@ -52,7 +52,6 @@
   <button class="music__btn music__btn--main" id="music-btn" type="button" aria-label="Play background music" aria-pressed="false">
     <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
     <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zm6 0h4v14h-4z" fill="currentColor"/></svg>
-    <span class="music__eq" aria-hidden="true"><i></i><i></i><i></i></span>
   </button>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -63,28 +62,31 @@
      ===================================================== -->
 <main id="site">
 
-  <!-- 4. HERO -->
+  <!-- 4. HERO : sunrise at the ghat -->
   <section class="hero" id="hero">
-    <div class="hero__motif" aria-hidden="true"></div>
-    <div class="wrap hero__inner">
-      <p class="deva hero__deva" data-hero="0">शुभ छठ पूजा</p>
-      <h1 class="hero__title" id="hero-title" data-split>Ek Chhoti Si Mithaas, Ek Badi Si Parampara.</h1>
-      <p class="hero__sub" data-hero="1">Har bite mein ek kahaani, har parampara mein apnapan.</p>
+    <div class="hero__sky">
+      <div class="wrap hero__top">
+        <p class="deva hero__deva" data-hero>छठ पूजा की शुभकामनाएँ</p>
+        <h1 class="hero__title" id="hero-title" data-split>Ek Chhoti Si Mithaas, Ek Badi Si Parampara.</h1>
+        <p class="hero__sub" data-hero>Har bite mein ek kahaani, har parampara mein apnapan.</p>
+      </div>
+      <div class="hero__scene" data-hero>
+        <img src="assets/illustrations/ghat-scene.svg" width="1200" height="700" alt="Illustration of families at a river ghat at sunrise: devotees standing in the water offering arghya to the sun, a man carrying offerings on his head, and a child with a diya." decoding="async">
+      </div>
+    </div>
 
-      <div class="hero__greet" data-hero="2">
-        <span class="hero__rule" aria-hidden="true"></span>
+    <div class="hero__band">
+      <div class="band-edge" aria-hidden="true"></div>
+      <div class="wrap hero__greet" data-hero>
         <p class="hero__happy">Happy Chhath Puja!</p>
         <p class="hero__love">With love, Rotaract Club of RiiT.</p>
+        <a class="btn btn--light hero__cta" href="#tradition" data-scroll>
+          Explore Our Story
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m0 0l-6-6m6 6l6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
-
-      <a class="btn btn--ghost hero__cta" href="#tradition" data-hero="3" data-scroll>
-        Explore Our Story
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m0 0l-6-6m6 6l6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
     </div>
   </section>
-
-  <div class="divider" aria-hidden="true"></div>
 
   <!-- 5. TRADITION -->
   <section class="section" id="tradition">
@@ -92,6 +94,7 @@
       <header class="section__head reveal">
         <p class="eyebrow">The Tradition <span class="deva">· परंपरा</span></p>
         <h2>A Festival of Faith, Tradition and Togetherness.</h2>
+        <div class="orn" aria-hidden="true"></div>
       </header>
 
       <div class="split">
@@ -101,10 +104,22 @@
           <p>Devotees fast, stand in water at sunset and again at sunrise, and offer <em>arghya</em> to the sun. Behind every devotee there is a whole family cleaning, cooking, carrying and singing. That is the real heart of Chhath: <strong>togetherness</strong>.</p>
         </div>
 
-        <div class="photo-stack reveal">
-          <figure class="slot slot--tall" data-img="assets/images/chhath-puja/ghat-sunrise" data-label="Chhath ghat at sunrise" data-alt="Devotees offering arghya to the rising sun at a river ghat"></figure>
-          <figure class="slot slot--sq" data-img="assets/images/chhath-puja/offerings" data-label="Traditional offerings in a soop" data-alt="Bamboo soop with fruits, sugarcane and thekua"></figure>
+        <div class="arch-card reveal" aria-hidden="false">
+          <div class="arch-card__sun" aria-hidden="true"></div>
+          <img class="arch-card__a" src="assets/illustrations/devotee-arghya.svg" width="320" height="420" loading="lazy" alt="A woman in a red saree standing in the river, holding a soop of offerings up to the sun">
+          <img class="arch-card__b" src="assets/illustrations/soop-bearer.svg" width="320" height="460" loading="lazy" alt="A man walking to the ghat with a daura of offerings and sugarcane on his head">
         </div>
+      </div>
+
+      <div class="photos photos--2 reveal">
+        <figure class="figure">
+          <div class="slot slot--arch" data-img="assets/images/chhath-puja/ghat-sunrise" data-label="Chhath ghat at sunrise" data-alt="Devotees standing in the river and offering arghya to the sun at a Chhath ghat"></div>
+          <figcaption>The ghat at sunrise <span class="credit" data-credit="ghat-sunrise"></span></figcaption>
+        </figure>
+        <figure class="figure">
+          <div class="slot slot--arch" data-img="assets/images/chhath-puja/offerings" data-label="Traditional offerings in the soop" data-alt="A bamboo soop filled with fruits, sugarcane and thekua offered during Chhath"></div>
+          <figcaption>Offerings in the soop <span class="credit" data-credit="offerings"></span></figcaption>
+        </figure>
       </div>
 
       <ol class="days" aria-label="The four days of Chhath">
@@ -132,26 +147,32 @@
     </div>
   </section>
 
-  <div class="divider" aria-hidden="true"></div>
-
   <!-- 6. THEKUA -->
   <section class="section section--yellow" id="thekua">
     <div class="wrap">
       <header class="section__head reveal">
         <p class="eyebrow">The Prasad <span class="deva">· ठेकुआ</span></p>
         <h2>More Than Just a Sweet.</h2>
+        <div class="orn" aria-hidden="true"></div>
       </header>
 
       <div class="split split--rev">
-        <div class="photo-stack photo-stack--duo reveal">
-          <figure class="slot slot--sq" data-img="assets/images/thekua/thekua-plate" data-label="Freshly made Thekua" data-alt="A plate of golden Thekua with patterns from the wooden mould"></figure>
-          <figure class="slot slot--wide" data-img="assets/images/thekua/ingredients" data-label="Traditional ingredients" data-alt="Wheat flour, jaggery, ghee, coconut and cardamom"></figure>
+        <div class="photos photos--duo reveal">
+          <figure class="figure">
+            <div class="slot slot--arch" data-img="assets/images/thekua/thekua-plate" data-label="Freshly made Thekua" data-alt="Golden Thekua with patterns pressed from a wooden mould"></div>
+            <figcaption>Freshly made Thekua <span class="credit" data-credit="thekua-plate"></span></figcaption>
+          </figure>
+          <figure class="figure figure--low">
+            <div class="slot slot--arch" data-img="assets/images/thekua/ingredients" data-label="Traditional ingredients" data-alt="Whole wheat flour, jaggery, ghee, coconut and cardamom"></div>
+            <figcaption>The traditional ingredients <span class="credit" data-credit="ingredients"></span></figcaption>
+          </figure>
         </div>
 
         <div class="prose reveal">
           <p><strong>Thekua</strong> is a crisp, golden, lightly sweet treat, a little like a cookie that grew up in a village kitchen. In some places you will hear it called <em>Khajuria</em>. It is made from wheat flour, jaggery or sugar and ghee, and it is the star of the Chhath soop.</p>
           <p>It has been part of Chhath for generations because it is simple, pure and keeps well for days. Families make it at home, with a clean kitchen and a lot of care, and it is offered to Surya Dev <em>before</em> anyone gets to taste it. That is what makes it prasad, not just a sweet.</p>
           <p>The dough is kneaded stiff, shaped, pressed into a carved wooden mould for those pretty patterns, and fried slowly until it turns golden. The sweet smell tells you the festival has arrived.</p>
+          <img class="soop-icon" src="assets/illustrations/soop.svg" width="220" height="150" loading="lazy" alt="A bamboo soop with thekua, fruits, sugarcane and a diya">
         </div>
       </div>
 
@@ -165,10 +186,11 @@
     </div>
   </section>
 
-  <div class="divider" aria-hidden="true"></div>
-
   <!-- 7. PREPARATION JOURNEY -->
-  <section class="section" id="journey">
+  <section class="section section--verm" id="journey">
+    <div class="band-edge band-edge--top" aria-hidden="true"></div>
+    <img class="deco deco--cane" src="assets/illustrations/sugarcane.svg" width="200" height="360" loading="lazy" alt="">
+    <img class="deco deco--girl" src="assets/illustrations/girl-diya.svg" width="200" height="260" loading="lazy" alt="">
     <div class="wrap">
       <header class="section__head section__head--center reveal">
         <p class="eyebrow">Step by Step <span class="deva">· बनाने की विधि</span></p>
@@ -177,14 +199,12 @@
       </header>
 
       <div class="journey reveal" id="journey-card">
-        <!-- progress stepper (built by script.js) -->
         <div class="stepper" id="stepper" role="tablist" aria-label="Preparation steps">
           <div class="stepper__track" aria-hidden="true"><span class="stepper__fill" id="stepper-fill"></span></div>
           <div class="stepper__nodes" id="stepper-nodes"></div>
         </div>
         <p class="stepper__count" id="step-count" aria-live="polite">Step 1 of 5</p>
 
-        <!-- step panels (built by script.js from STEPS in script.js) -->
         <div class="panels" id="panels"></div>
 
         <div class="journey__nav">
@@ -198,64 +218,44 @@
           </button>
         </div>
 
-        <!-- celebration -->
         <div class="done" id="journey-done" hidden>
           <div class="done__burst" id="burst" aria-hidden="true"></div>
+          <img class="done__art" src="assets/illustrations/soop.svg" width="220" height="150" loading="lazy" alt="">
           <p class="deva done__deva">प्रसाद तैयार है</p>
           <h3>And that&rsquo;s how a little tradition comes together!</h3>
           <div class="done__actions">
-            <a class="btn btn--solid" href="#initiative" data-scroll>Continue Exploring</a>
+            <a class="btn btn--solid" href="#clip" data-scroll>Continue Exploring</a>
             <button class="btn btn--text" id="restart-steps" type="button">Watch again from Step 1</button>
           </div>
         </div>
       </div>
 
-      <!-- ingredient explorer -->
       <div class="ingredients reveal" id="ingredients">
         <h3 class="ingredients__title">Know your ingredients <small>Tap to learn more</small></h3>
         <div class="ingredients__chips" id="ing-chips" role="tablist" aria-label="Ingredients"></div>
         <div class="ingredients__info" id="ing-info" role="tabpanel" aria-live="polite">
-          <p>Pick an ingredient above to learn what it brings to a Thekua.</p>
+          <p class="ingredients__hint">Pick an ingredient above to learn what it brings to a Thekua.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="divider" aria-hidden="true"></div>
-
-  <!-- 8. INITIATIVE -->
-  <section class="section section--yellow" id="initiative">
-    <div class="wrap">
-      <header class="section__head reveal">
-        <p class="eyebrow">Our Initiative <span class="deva">· साझा खुशी</span></p>
-        <h2>Sharing a Little Happiness.</h2>
+  <!-- 8. DISTRIBUTION CLIP (video only) -->
+  <section class="section" id="clip">
+    <div class="wrap wrap--narrow">
+      <header class="section__head section__head--center reveal">
+        <p class="eyebrow">A Little Glimpse <span class="deva">· झलक</span></p>
+        <h2>Thekua, On Its Way.</h2>
+        <div class="orn" aria-hidden="true"></div>
       </header>
-
-      <div class="split">
-        <div class="prose reveal">
-          <p>This Chhath, we wanted to do something small and sweet. So we shared <strong>Thekua Prasad</strong> with our fellow Rotaract clubs: the same sweet that sits in the soop at the ghat, now travelling in a little packet.</p>
-          <p>Our idea was simple. Festivals feel bigger when they are shared. Many of us grew up with Chhath; many in the wider Rotaract family may be meeting it for the first time. A bite of Thekua is the easiest way to say, &ldquo;come, sit with us, this is where we come from.&rdquo;</p>
-          <p>And this page? It is the second half of the gift. You scanned, you tapped, you took a bite, and here you are. We hope it felt a little like home.</p>
-        </div>
-
-        <div class="collage reveal">
-          <figure class="slot slot--sq" data-img="assets/images/initiative/packaging" data-label="Our Thekua Prasad packaging" data-alt="Thekua Prasad packets with the QR code"></figure>
-          <figure class="slot slot--sq" data-img="assets/images/initiative/distribution" data-label="Distribution moments" data-alt="Handing over Thekua Prasad to fellow Rotaractors"></figure>
-          <figure class="slot slot--wide collage__wide" data-img="assets/images/initiative/group-photo" data-label="Group photograph" data-alt="Rotaract Club of RiiT members together"></figure>
-        </div>
-      </div>
-
       <div class="clip reveal">
         <div class="vstage" data-video="assets/videos/distribution-clip" data-label="Distribution Clip" data-ar="16/9"></div>
-        <p class="caption">A little glimpse from the distribution.</p>
       </div>
     </div>
   </section>
 
-  <div class="divider" aria-hidden="true"></div>
-
   <!-- 9. CLUB MESSAGE -->
-  <section class="section" id="message">
+  <section class="section section--yellow" id="message">
     <div class="wrap wrap--narrow">
       <header class="section__head section__head--center reveal">
         <p class="eyebrow">From Our Family <span class="deva">· हमारा संदेश</span></p>
@@ -271,14 +271,19 @@
 
   <!-- 16. CLOSING GREETING -->
   <footer class="closing" id="closing">
-    <div class="closing__motif" aria-hidden="true"></div>
     <div class="wrap wrap--narrow reveal">
       <p class="deva closing__deva">छठ पूजा की हार्दिक शुभकामनाएँ</p>
       <h2 class="closing__title">Happy Chhath Puja!</h2>
+      <div class="orn" aria-hidden="true"></div>
       <p class="closing__text">May Surya Dev and Chhathi Maiya fill your home with light, health and sweetness.</p>
       <p class="closing__love">With love, Rotaract Club of RiiT.</p>
       <button class="btn btn--ghost closing__top" type="button" id="back-top">Back to the top</button>
     </div>
+    <img class="closing__walk" src="assets/illustrations/family-walk.svg" width="1200" height="330" loading="lazy" alt="A family walking home from the ghat, carrying offerings and diyas">
+    <details class="credits" id="credits" hidden>
+      <summary>Photo credits</summary>
+      <ul id="credits-list"></ul>
+    </details>
   </footer>
 </main>
 

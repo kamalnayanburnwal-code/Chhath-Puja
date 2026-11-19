@@ -7,8 +7,10 @@
    ========================================================= */
 
 const CONFIG = {
-  // Background music (add your file at this exact path, or change the path)
-  music: "assets/audio/background-music.mp3",
+  // Background music. Just rename your downloaded file to  background-music.mp3
+  // (.m4a / .ogg / .wav also work, same name) and put it in assets/audio/
+  music: "assets/audio/background-music",
+  audioExts: [".mp3", ".m4a", ".ogg", ".wav"],
   musicVolume: 0.4,
 
   // Allowed file types are tried in this order, so you can drop in
@@ -30,12 +32,12 @@ const CONFIG = {
 
   // Ingredient explorer (tap to reveal). Recipes vary from home to home.
   ingredients: [
-    { name: "Atta",        info: "Whole wheat flour is the heart of every Thekua. It gives the dough its earthy flavour and that satisfying crunch." },
-    { name: "Gur / Sugar", info: "Jaggery is the traditional sweetener, giving a deep caramel note. Many families dissolve it in water first, so the sweetness spreads evenly." },
-    { name: "Ghee",        info: "A little ghee worked into the flour makes the Thekua crisp outside and crumbly inside. It also adds that unmistakable festive aroma." },
-    { name: "Naariyal",    info: "Dry coconut, grated or sliced, adds little pockets of sweetness and a gentle chew." },
-    { name: "Saunf",       info: "Fennel seeds bring a cool, lightly sweet fragrance that balances the jaggery." },
-    { name: "Elaichi",     info: "Crushed cardamom is the final perfume. One whiff and it smells like Chhath." }
+    { name: "Atta",        img: "assets/images/ingredients/atta",     info: "Whole wheat flour is the heart of every Thekua. It gives the dough its earthy flavour and that satisfying crunch." },
+    { name: "Gur / Sugar", img: "assets/images/ingredients/gur",      info: "Jaggery is the traditional sweetener, giving a deep caramel note. Many families dissolve it in water first, so the sweetness spreads evenly." },
+    { name: "Ghee",        img: "assets/images/ingredients/ghee",     info: "A little ghee worked into the flour makes the Thekua crisp outside and crumbly inside. It also adds that unmistakable festive aroma." },
+    { name: "Naariyal",    img: "assets/images/ingredients/naariyal", info: "Dry coconut, grated or sliced, adds little pockets of sweetness and a gentle chew." },
+    { name: "Saunf",       img: "assets/images/ingredients/saunf",    info: "Fennel seeds bring a cool, lightly sweet fragrance that balances the jaggery." },
+    { name: "Elaichi",     img: "assets/images/ingredients/elaichi",  info: "Crushed cardamom is the final perfume. One whiff and it smells like Chhath." }
   ],
 
   // Opening-screen messages after each bite
@@ -97,7 +99,7 @@ const Opening = (() => {
   // Build image stack (stage 0 = whole Thekua, stage 5 = crumbs)
   const imgs = files.map((f, i) => {
     const im = new Image();
-    im.src = `assets/images/${f}.png`;
+    im.src = `assets/images/${f}.webp`;
     im.alt = "";
     im.decoding = "async";
     im.draggable = false;
@@ -108,7 +110,7 @@ const Opening = (() => {
   for (let i = 0; i < TOTAL; i++) dots.appendChild(el("i"));
 
   // Per-bite crumb origin (percent of the Thekua box), roughly where each bite is
-  const origins = [[82, 34], [14, 58], [38, 22], [68, 70], [50, 52]];
+  const origins = [[69, 37], [68, 58], [60, 41], [60, 63], [34, 50]];
 
   function burst(stage) {
     if (reduceMotion || !crumbs.animate) return;
@@ -331,10 +333,15 @@ $$(".slot[data-img]").forEach(initSlot);
 const Music = (() => {
   const wrap = $("#music"), btn = $("#music-btn"), volBtn = $("#music-vol-btn"), panel = $("#music-panel"), vol = $("#music-vol");
   const audio = new Audio();
-  audio.loop = true; audio.preload = "none"; audio.src = CONFIG.music;
+  audio.loop = true; audio.preload = "none";
+  let aExt = 0;
+  audio.src = CONFIG.music + CONFIG.audioExts[aExt];
   let userVol = CONFIG.musicVolume, wantOn = false, missing = false, ducked = false, fadeT;
   vol.value = Math.round(userVol * 100);
-  audio.addEventListener("error", () => { missing = true; wantOn = false; sync(); });
+  audio.addEventListener("error", () => {
+    if (++aExt < CONFIG.audioExts.length) { audio.src = CONFIG.music + CONFIG.audioExts[aExt]; if (wantOn) audio.play().catch(() => {}); return; }
+    missing = true; wantOn = false; sync();
+  });
 
   function sync() {
     const on = wantOn && !missing;
@@ -353,7 +360,7 @@ const Music = (() => {
     }, 40);
   }
   function play() {
-    if (missing) { toast("Add assets/audio/background-music.mp3 to hear the music."); return; }
+    if (missing) { toast("Music coming soon: add assets/audio/background-music.mp3"); return; }
     wantOn = true; sync();
     if (ducked) return; // will resume when the video stops
     audio.volume = 0;
@@ -535,19 +542,38 @@ const Journey = (() => {
 /* Ingredient explorer */
 (() => {
   const chips = $("#ing-chips"), info = $("#ing-info");
-  CONFIG.ingredients.forEach((ing, i) => {
+  CONFIG.ingredients.forEach(ing => {
     const b = el("button", { class: "ing", type: "button", role: "tab", "aria-selected": "false" }, "");
     b.textContent = ing.name;
     b.addEventListener("click", () => {
       $$(".ing", chips).forEach(c => c.setAttribute("aria-selected", String(c === b)));
-      info.classList.remove("swap"); void info.offsetWidth; info.classList.add("swap");
-      info.innerHTML = "<h4></h4><p></p>";
-      $("h4", info).textContent = ing.name;
-      $("p", info).textContent = ing.info;
+      info.className = "ingredients__info"; void info.offsetWidth; info.classList.add("swap", "has-item");
+      info.innerHTML = "";
+      const photo = el("div", { class: "slot ing-photo", "data-img": ing.img, "data-label": ing.name, "data-alt": ing.name });
+      const txt = el("div", {}, "<h4></h4><p></p>");
+      $("h4", txt).textContent = ing.name;
+      $("p", txt).textContent = ing.info;
+      info.append(photo, txt);
+      initSlot(photo);
     });
     chips.appendChild(b);
   });
 })();
+
+/* Photo credits (Creative Commons photos need attribution): read from assets/images/credits.json */
+fetch("assets/images/credits.json").then(r => r.ok ? r.json() : null).then(list => {
+  if (!list) return;
+  const ul = $("#credits-list");
+  Object.entries(list).forEach(([key, c]) => {
+    $$(`[data-credit="${key}"]`).forEach(n => { n.textContent = `Photo: ${c.author} · ${c.license}`; });
+    const li = el("li");
+    const a = el("a", { href: c.page, target: "_blank", rel: "noopener" });
+    a.textContent = c.title;
+    li.append(a, document.createTextNode(` by ${c.author}, ${c.license}`));
+    ul.appendChild(li);
+  });
+  $("#credits").hidden = false;
+}).catch(() => {});
 
 /* Other video stages: the distribution clip and the club message (auto-load when near screen) */
 $$(".vstage[data-video]:not(.vstage--step)").forEach(s => initVideoStage(s));

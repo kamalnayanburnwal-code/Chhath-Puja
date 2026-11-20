@@ -15,6 +15,6 @@ Extra steps: copy a line in the `steps` list at the top of script.js
 Compress before uploading (H.264, works on every phone; GitHub limit is 100 MB per file):
   ffmpeg -i input.mov -vf "scale=-2:720" -c:v libx264 -crf 26 -preset slow -c:a aac -b:a 96k -movflags +faststart preparation-step-01.mp4
 
-SOUND: the 5 preparation clips and the distribution clip play muted (the background music keeps playing).
+SOUND: the 5 preparation clips and the distribution clip have NO audio track at all (removed from the files) and are muted in code too.
 The club message keeps its sound and lowers the music while it plays.
 To change this, edit the data-muted attribute in index.html and the "muted: true" in script.js.

@@ -200,8 +200,31 @@ const Site = (() => {
     `<span class="word" aria-hidden="true"><span style="--i:${i}">${w}</span></span> `).join("");
   $$("[data-hero]").forEach((n, i) => n.style.setProperty("--i", 900 + i * 260));
 
+  // Hero scene: the SVG is pulled inline so its entrance (sun rises, light fades in, people walk in)
+  // can start exactly when the intro ends. Mobile gets a portrait version so nobody is cropped.
+  const sceneHost = $("#hero-scene"), mq = matchMedia("(max-width: 899px)");
+  let sceneFile = "", live = false, liveAt = 0;
+  function loadScene() {
+    const f = mq.matches ? "ghat-scene-mobile.svg" : "ghat-scene.svg";
+    if (f === sceneFile) return;
+    sceneFile = f;
+    fetch("assets/illustrations/" + f).then(r => (r.ok ? r.text() : Promise.reject())).then(t => {
+      if (f !== sceneFile) return;
+      sceneHost.innerHTML = t;
+      const svg = $("svg", sceneHost); if (!svg) return;
+      svg.removeAttribute("width"); svg.removeAttribute("height");
+      svg.setAttribute("aria-label", sceneHost.dataset.alt || "");
+      if (!reduceMotion) svg.classList.add(!live ? "s-pre" : (Date.now() - liveAt < 5000 ? "s-go" : "s-done"));
+    }).catch(() => {}); // if it cannot load, the plain <img> stays
+  }
+  loadScene();
+  (mq.addEventListener ? mq.addEventListener("change", loadScene) : mq.addListener(loadScene));
+
   function reveal() {
     const hero = $("#hero");
+    live = true; liveAt = Date.now();
+    const svg = $("svg", sceneHost);
+    if (svg && svg.classList.contains("s-pre")) { svg.classList.remove("s-pre"); svg.classList.add("s-go"); }
     requestAnimationFrame(() => requestAnimationFrame(() => hero.classList.add("is-live")));
   }
 

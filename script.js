@@ -24,8 +24,8 @@ const CONFIG = {
   steps: [
     { title: "Preparing the Base",         text: "It all begins with flour poured from the packet into a big steel bowl.",        video: "assets/videos/preparation-step-01", poster: "assets/images/preparation/step-01" },
     { title: "Adding the Ingredients",     text: "Chopped dry mix-ins are scattered over the flour.",                             video: "assets/videos/preparation-step-02", poster: "assets/images/preparation/step-02" },
-    { title: "Adding the Gur",             text: "Thick, dark gur (jaggery) goes in and is worked into the flour by hand.",       video: "assets/videos/preparation-step-03", poster: "assets/images/preparation/step-03" },
-    { title: "Adding the Ghee",            text: "Ghee is poured from the jar over the flour and the mix-ins.",                   video: "assets/videos/preparation-step-04", poster: "assets/images/preparation/step-04" },
+    { title: "Adding the Ghee",            text: "Ghee is poured from the jar over the flour and the mix-ins.",                   video: "assets/videos/preparation-step-03", poster: "assets/images/preparation/step-03" },
+    { title: "Adding the Gur",             text: "Thick, dark gur (jaggery) goes in and is worked into the flour by hand.",       video: "assets/videos/preparation-step-04", poster: "assets/images/preparation/step-04" },
     { title: "Mixing Everything Together", text: "Everything is mixed together by hand until it is evenly combined.",             video: "assets/videos/preparation-step-05", poster: "assets/images/preparation/step-05" }
     // , { title: "Shaping the Thekua", text: "...", video: "assets/videos/preparation-step-06" }
   ],

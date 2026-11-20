@@ -22,13 +22,14 @@ const CONFIG = {
   // buttons and layout adapt automatically. `video` is the path WITHOUT extension.
   // Please re-check each title/text against your final clips.
   steps: [
-    { title: "Preparing the Base",           text: "It all begins here, with flour poured into a big steel bowl.",                         video: "assets/videos/preparation-step-01", poster: "assets/images/preparation/step-01" },
-    { title: "Adding the Ingredients",       text: "Chopped dry fruits and nuts are scattered over the flour.",                     video: "assets/videos/preparation-step-02", poster: "assets/images/preparation/step-02" },
-    { title: "Adding the Liquid",            text: "A thick golden liquid is poured over the flour and mix-ins.",                      video: "assets/videos/preparation-step-03", poster: "assets/images/preparation/step-03" },
-    { title: "Mixing Everything Together",   text: "Everything is mixed together by hand, so no corner is left out.",                   video: "assets/videos/preparation-step-04", poster: "assets/images/preparation/step-04" },
-    { title: "Kneading the Mixture",         text: "Hands knead the mixture, bringing it all together into a dough.",     video: "assets/videos/preparation-step-05", poster: "assets/images/preparation/step-05" }
+    { title: "Preparing the Base",         text: "It all begins with flour poured from the packet into a big steel bowl.",        video: "assets/videos/preparation-step-01", poster: "assets/images/preparation/step-01" },
+    { title: "Adding the Ingredients",     text: "Chopped dry mix-ins are scattered over the flour.",                             video: "assets/videos/preparation-step-02", poster: "assets/images/preparation/step-02" },
+    { title: "Adding the Gur",             text: "Thick, dark gur (jaggery) goes in and is worked into the flour by hand.",       video: "assets/videos/preparation-step-03", poster: "assets/images/preparation/step-03" },
+    { title: "Adding the Ghee",            text: "Ghee is poured from the jar over the flour and the mix-ins.",                   video: "assets/videos/preparation-step-04", poster: "assets/images/preparation/step-04" },
+    { title: "Mixing Everything Together", text: "Everything is mixed together by hand until it is evenly combined.",             video: "assets/videos/preparation-step-05", poster: "assets/images/preparation/step-05" }
     // , { title: "Shaping the Thekua", text: "...", video: "assets/videos/preparation-step-06" }
   ],
+
 
   // Ingredient explorer (tap to reveal). Recipes vary from home to home.
   ingredients: [

@@ -1,6 +1,6 @@
 DROP YOUR VIDEOS HERE (exact file names, no code changes needed)
 
-  preparation-step-01.mp4   Preparation Step 1
+
   preparation-step-02.mp4   Preparation Step 2
   preparation-step-03.mp4   Preparation Step 3
   preparation-step-04.mp4   Preparation Step 4

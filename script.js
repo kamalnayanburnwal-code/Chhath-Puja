@@ -302,6 +302,7 @@ function initVideoStage(stage, opts = {}) {
   stage.appendChild(ph);
   if (stage.dataset.ar) stage.style.setProperty("--ar", stage.dataset.ar);
 
+  const silent = !!opts.muted || stage.hasAttribute("data-muted"); // cooking + distribution clips play without sound
   let state = "idle"; // idle | loading | ready | missing
   let video = null;
 
@@ -318,6 +319,7 @@ function initVideoStage(stage, opts = {}) {
     const exts = hasExt(base) ? [""] : CONFIG.videoExts;
     let i = 0;
     video = el("video", { controls: "", playsinline: "", preload: "metadata", "aria-label": label });
+    if (silent) { video.muted = true; video.defaultMuted = true; video.setAttribute("muted", ""); } // silent clip: the music keeps playing
     video.setAttribute("webkit-playsinline", "");
     const fail = () => {
       if (i < exts.length) { video.src = base + exts[i++]; video.load(); return; }
@@ -407,10 +409,12 @@ const Music = (() => {
 
   // Ducking: any <video> playing quiets the music; it comes back when playback pauses or ends
   const playing = new Set();
+  const audible = v => !v.muted && v.volume > 0;
   function onVideo(e) {
     if (!(e.target instanceof HTMLVideoElement)) return;
-    if (e.type === "playing" || e.type === "play") playing.add(e.target); else playing.delete(e.target);
-    const shouldDuck = playing.size > 0;
+    if (e.type === "play" || e.type === "playing") playing.add(e.target);
+    else if (e.type !== "volumechange") playing.delete(e.target);
+    const shouldDuck = [...playing].some(audible); // muted clips never lower the music
     if (shouldDuck === ducked) return;
     ducked = shouldDuck;
     if (ducked) {
@@ -419,7 +423,7 @@ const Music = (() => {
       audio.play().then(() => fadeTo(userVol, 1200)).catch(() => {});
     }
   }
-  ["play", "playing", "pause", "ended", "emptied"].forEach(t => document.addEventListener(t, onVideo, true));
+  ["play", "playing", "pause", "ended", "emptied", "volumechange"].forEach(t => document.addEventListener(t, onVideo, true));
 
   document.addEventListener("visibilitychange", () => { // don't keep playing in a hidden tab
     if (document.hidden && !audio.paused) audio.pause();
@@ -467,7 +471,7 @@ const Journey = (() => {
     $("h3", panel).textContent = s.title;
     $(".panel__text", panel).textContent = s.text;
     const stage = $(".vstage", panel);
-    initVideoStage(stage, { manual: true, poster: s.poster });
+    initVideoStage(stage, { manual: true, poster: s.poster, muted: true });
     const rp = $(".panel__replay", panel);
     rp.disabled = true;
     stage.addEventListener("videoready", () => { rp.disabled = false; });
